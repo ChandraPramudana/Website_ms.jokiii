@@ -16,7 +16,8 @@ import {
   Crown,
   type LucideIcon,
 } from "lucide-react";
-import { SPSS_TIERS, SPSS_TESTS, WA_LINK } from "@/lib/constants";
+import { SPSS_TIERS, SPSS_TESTS } from "@/lib/constants";
+import { useAdminPicker } from "./AdminPicker";
 import ScrollReveal from "./ScrollReveal";
 
 const TEST_ICON_MAP: Record<string, LucideIcon> = {
@@ -39,6 +40,7 @@ const formatRupiah = (value: number) =>
   }).format(value);
 
 export default function SpssPricing() {
+  const { openPicker } = useAdminPicker();
   return (
     <section
       id="pricelist"
@@ -144,10 +146,9 @@ export default function SpssPricing() {
                   ))}
                 </ul>
 
-                <a
-                  href={WA_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  type="button"
+                  onClick={openPicker}
                   className={`mt-6 flex items-center justify-center gap-2 rounded-full px-5 py-3 font-body text-sm font-bold transition-transform hover:scale-105 ${
                     tier.highlight
                       ? "bg-white text-sky-600 hover:bg-sunny-100"
@@ -156,7 +157,7 @@ export default function SpssPricing() {
                 >
                   <MessageCircle size={16} />
                   Pilih {tier.title}
-                </a>
+                </button>
               </motion.div>
             </ScrollReveal>
           ))}

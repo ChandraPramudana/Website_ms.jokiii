@@ -2,11 +2,12 @@
 
 import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
-import { WA_LINK } from "@/lib/constants";
+import { useAdminPicker } from "./AdminPicker";
 import Mascot from "./Mascot";
 import ScrollReveal from "./ScrollReveal";
 
 export default function CTA() {
+  const { openPicker } = useAdminPicker();
   return (
     <section
       id="kontak"
@@ -22,17 +23,16 @@ export default function CTA() {
             yang bantu beresin.
           </p>
 
-          <motion.a
-            href={WA_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
+          <motion.button
+            type="button"
+            onClick={openPicker}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
             className="mt-7 inline-flex items-center gap-3 rounded-full bg-sunny-400 px-8 py-4 font-display text-base font-bold text-ink-700 shadow-soft-lg"
           >
             <MessageCircle size={22} />
             Chat WhatsApp Sekarang
-          </motion.a>
+          </motion.button>
         </ScrollReveal>
 
         <motion.div

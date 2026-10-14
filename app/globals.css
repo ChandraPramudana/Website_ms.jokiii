@@ -43,3 +43,9 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+
+:root {
+  --font-baloo: "Baloo 2";
+  --font-jakarta: "Plus Jakarta Sans";
+}

@@ -9,10 +9,11 @@ import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import AdminPickerProvider from "@/components/AdminPicker";
 
 export default function Home() {
   return (
-    <>
+    <AdminPickerProvider>
       <Navbar />
       <main>
         <Hero />
@@ -26,6 +27,6 @@ export default function Home() {
       </main>
       <Footer />
       <FloatingWhatsApp />
-    </>
+    </AdminPickerProvider>
   );
 }

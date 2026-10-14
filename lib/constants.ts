@@ -1,10 +1,37 @@
 export const BRAND_NAME = "ms.jokiii";
 
-export const WA_NUMBER = "6289666053367";
 export const WA_MESSAGE = "Halo kak, saya tertarik menggunakan jasa ms.jokiii";
-export const WA_LINK = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(
-  WA_MESSAGE
-)}`;
+
+export type WaAdmin = {
+  id: string;
+  name: string;
+  role: string;
+  number: string;
+  displayNumber: string;
+  link: string;
+};
+
+const buildWaLink = (number: string) =>
+  `https://wa.me/${number}?text=${encodeURIComponent(WA_MESSAGE)}`;
+
+export const WA_ADMINS: WaAdmin[] = [
+  {
+    id: "admin-1",
+    name: "Admin 1",
+    role: "Utama",
+    number: "6289666053367",
+    displayNumber: "0896-6605-3367",
+    link: buildWaLink("6289666053367"),
+  },
+  {
+    id: "admin-2",
+    name: "Admin 2",
+    role: "Ikna",
+    number: "6289502203203",
+    displayNumber: "0895-0220-3203",
+    link: buildWaLink("6289502203203"),
+  },
+];
 
 export const NAV_LINKS = [
   { label: "Beranda", href: "#beranda" },

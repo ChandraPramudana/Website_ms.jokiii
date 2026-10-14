@@ -3,11 +3,13 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, MessageCircle, GraduationCap } from "lucide-react";
-import { NAV_LINKS, WA_LINK } from "@/lib/constants";
+import { NAV_LINKS } from "@/lib/constants";
+import { useAdminPicker } from "./AdminPicker";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { openPicker } = useAdminPicker();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -48,15 +50,14 @@ export default function Navbar() {
         </ul>
 
         <div className="flex items-center gap-3">
-          <a
-            href={WA_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            type="button"
+            onClick={openPicker}
             className="hidden items-center gap-2 rounded-full bg-sky-500 px-5 py-2.5 font-body text-sm font-bold text-white shadow-soft transition-transform hover:scale-105 hover:bg-sky-600 sm:flex"
           >
             <MessageCircle size={18} />
             WhatsApp
-          </a>
+          </button>
           <button
             aria-label="Buka menu"
             onClick={() => setOpen((v) => !v)}
@@ -89,16 +90,17 @@ export default function Navbar() {
                 </li>
               ))}
               <li className="pt-1">
-                <a
-                  href={WA_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setOpen(false)}
-                  className="flex items-center justify-center gap-2 rounded-full bg-sky-500 px-5 py-2.5 font-body text-sm font-bold text-white shadow-soft"
+                <button
+                  type="button"
+                  onClick={() => {
+                    setOpen(false);
+                    openPicker();
+                  }}
+                  className="flex w-full items-center justify-center gap-2 rounded-full bg-sky-500 px-5 py-2.5 font-body text-sm font-bold text-white shadow-soft"
                 >
                   <MessageCircle size={18} />
                   Chat WhatsApp
-                </a>
+                </button>
               </li>
             </ul>
           </motion.div>

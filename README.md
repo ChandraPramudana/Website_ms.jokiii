@@ -109,11 +109,12 @@ Ubah nilai di file tersebut untuk memperbarui konten tanpa perlu menyentuh kompo
 
 ## 📱 Kontak WhatsApp
 
-Semua tombol "Pesan Sekarang" / "Konsultasi Sekarang" / "Chat WhatsApp" mengarah ke:
+Ada 2 admin WhatsApp (daftar di `WA_ADMINS` pada `lib/constants.ts`):
 
-```
-https://wa.me/6289666053367?text=Halo%20kak%2C%20saya%20tertarik%20menggunakan%20jasa%20ms.jokiii
-```
+- Admin 1 (Utama): 0896-6605-3367
+- Admin 2 (Ikna): 0895-0220-3203
+
+Semua tombol "Pesan Sekarang" / "Konsultasi Sekarang" / "Chat WhatsApp" membuka pop-up pilihan admin, lalu mengarah ke `https://wa.me/<nomor>` dengan pesan otomatis. Footer menampilkan kedua nomor langsung.
 
 ---
 

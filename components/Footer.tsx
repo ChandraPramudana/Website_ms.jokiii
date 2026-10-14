@@ -1,9 +1,8 @@
 import { GraduationCap, MessageCircle, Clock } from "lucide-react";
-import { WA_LINK, WA_NUMBER, OPERATIONAL_HOURS } from "@/lib/constants";
+import { WA_ADMINS, OPERATIONAL_HOURS } from "@/lib/constants";
 
 export default function Footer() {
   const year = new Date().getFullYear();
-  const displayNumber = `0${WA_NUMBER.slice(2)}`;
 
   return (
     <footer className="bg-ink-700 py-12 text-white">
@@ -25,15 +24,18 @@ export default function Footer() {
           <h4 className="font-display text-sm font-bold uppercase tracking-wide text-sky-300">
             Kontak
           </h4>
-          <a
-            href={WA_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 font-body text-sm text-white/80 hover:text-white"
-          >
-            <MessageCircle size={16} />
-            {displayNumber}
-          </a>
+          {WA_ADMINS.map((admin) => (
+            <a
+              key={admin.id}
+              href={admin.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 font-body text-sm text-white/80 hover:text-white"
+            >
+              <MessageCircle size={16} />
+              {admin.name} ({admin.role}): {admin.displayNumber}
+            </a>
+          ))}
           <p className="flex items-center gap-2 font-body text-sm text-white/80">
             <Clock size={16} />
             {OPERATIONAL_HOURS}

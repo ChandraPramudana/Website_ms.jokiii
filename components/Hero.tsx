@@ -2,11 +2,12 @@
 
 import { motion } from "framer-motion";
 import { MessageCircle, Tag } from "lucide-react";
-import { WA_LINK } from "@/lib/constants";
+import { useAdminPicker } from "./AdminPicker";
 import Mascot from "./Mascot";
 import FloatingIcons from "./FloatingIcons";
 
 export default function Hero() {
+  const { openPicker } = useAdminPicker();
   return (
     <section
       id="beranda"
@@ -41,15 +42,14 @@ export default function Hero() {
           </p>
 
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start">
-            <a
-              href={WA_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
+              onClick={openPicker}
               className="flex w-full items-center justify-center gap-2 rounded-full bg-sky-500 px-7 py-3.5 font-body text-sm font-bold text-white shadow-glow transition-transform hover:-translate-y-0.5 hover:bg-sky-600 sm:w-auto"
             >
               <MessageCircle size={18} />
               Konsultasi Sekarang
-            </a>
+            </button>
             <a
               href="#pricelist"
               className="flex w-full items-center justify-center gap-2 rounded-full border-2 border-sky-300 bg-white/70 px-7 py-3.5 font-body text-sm font-bold text-sky-700 transition-transform hover:-translate-y-0.5 hover:bg-white sm:w-auto"

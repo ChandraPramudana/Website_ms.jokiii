@@ -1,23 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Baloo_2, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import LoadingScreen from "@/components/LoadingScreen";
 import MouseSparkle from "@/components/MouseSparkle";
 import BackToTop from "@/components/BackToTop";
-
-const baloo = Baloo_2({
-  subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
-  variable: "--font-baloo",
-  display: "swap",
-});
-
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-jakarta",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "ms.jokiii | Jasa SPSS, Makalah, dan PPT",
@@ -59,9 +44,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id">
-      <body
-        className={`${baloo.variable} ${jakarta.variable} font-body antialiased`}
-      >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        />
+      </head>
+      <body className="font-body antialiased">
         <LoadingScreen />
         <MouseSparkle />
         {children}

@@ -8,7 +8,8 @@ import {
   MessageCircle,
   type LucideIcon,
 } from "lucide-react";
-import { PRICE_LIST, WA_LINK } from "@/lib/constants";
+import { PRICE_LIST } from "@/lib/constants";
+import { useAdminPicker } from "./AdminPicker";
 import ScrollReveal from "./ScrollReveal";
 
 const ICON_MAP: Record<string, LucideIcon> = {
@@ -25,6 +26,7 @@ const formatRupiah = (value: number) =>
   }).format(value);
 
 export default function Pricelist() {
+  const { openPicker } = useAdminPicker();
   return (
     <section className="relative overflow-hidden bg-white py-20 sm:py-28">
       <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
@@ -105,10 +107,9 @@ export default function Pricelist() {
                     </div>
                   </div>
 
-                  <a
-                    href={WA_LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    type="button"
+                    onClick={openPicker}
                     className={`mt-5 flex items-center justify-center gap-2 rounded-full px-5 py-3 font-body text-sm font-bold transition-transform hover:scale-105 ${
                       item.highlight
                         ? "bg-white text-sky-600 hover:bg-sunny-100"
@@ -117,7 +118,7 @@ export default function Pricelist() {
                   >
                     <MessageCircle size={16} />
                     Pesan Sekarang
-                  </a>
+                  </button>
                 </motion.div>
               </ScrollReveal>
             );
